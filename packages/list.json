@@ -1,0 +1,21 @@
+[
+	{
+		"compName": "Icon",
+		"compZhName": "图标",
+		"compDesc": "这是一个图标",
+		"compClassName": "DetaIcon"
+	},
+	{
+		"compName": "Button",
+		"compZhName": "按钮",
+		"compDesc": "这是一个按钮",
+		"compClassName": "DetaButton"
+	},
+	{
+		"compName": "Link",
+		"compZhName": "链接",
+		"compDesc": "这是一个新链接",
+		"compClassName": "DetaLink",
+		"regisiterCompName": "link"
+	}
+]

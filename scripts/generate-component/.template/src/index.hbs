@@ -1,0 +1,11 @@
+import { defineComponent, } from 'vue'
+import type { SetupContext, PropType } from 'vue'
+import type { I{{compClassName}} } from './types/I{{compClassName}}.d'
+
+
+export default defineComponent< I{{compClassName}} >({
+	name: 'deta-{{regisiterCompName}}',
+	setup(props, { slots }: SetupContext) {
+		return () => <div>{{compDesc}}</div>
+	},
+})
