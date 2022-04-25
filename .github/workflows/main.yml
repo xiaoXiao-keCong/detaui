@@ -22,20 +22,9 @@ jobs:
 
         # Steps represent a sequence of tasks that will be executed as part of the job
         steps:
-          - run: echo "🎉 这是啥  ${{ github.event_name }} event."
-          - run: echo "🐧 这是啥  ${{ runner.os }} server hosted by GitHub!"
-          - run: echo "🔎 这是啥  is ${{ github.ref }} and your repository is ${{ github.repository }}."
-            name: Checkout code
-            uses: actions/checkout@v2
-          - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-          - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-          - name: List files in the repository
-
-            - name: 测测试
-              run: echo Hello, world!
-
-            # 步骤2：安装依赖和打包
-            - name: 安装依赖和打包
-              run: |
-                npm install,
-                npm run build
+          - name: Checkout  #步骤1：checkout
+            uses: actions/checkout@v2.3.1 #checkout需要引用的依赖
+          - name: install and build #步骤2：安装依赖和打包
+            run: | #运行下面两行命令
+              npm install #安装依赖，当前分支的根目录做为默认目录
+              npm run build #打包代码
