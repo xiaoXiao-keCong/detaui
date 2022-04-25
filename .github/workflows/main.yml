@@ -35,7 +35,7 @@ jobs:
                 echo Add other actions to build,
                 echo test, and deploy your project.
             # 步骤2：安装依赖和打包
-            - name: install and build
+            - name: 安装依赖和打包
               run: |
-                npm install
+                npm install,
                 npm run build
