@@ -24,6 +24,9 @@ jobs:
         steps:
           - name: Checkout  #步骤1：checkout
             uses: actions/checkout@v2.3.1 #checkout需要引用的依赖
+            with:
+              repository: xiaoXiao-keCong/detaui
+              path: detaui
           - name: install and build #步骤2：安装依赖和打包
             run: | #运行下面两行命令
               npm install #安装依赖，当前分支的根目录做为默认目录
