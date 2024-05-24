@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: ./github/actions/checkout # 使用本地版本的 actions/checkout
+        uses: actions/checkout@v4
         with:
           repository: xiaoXiao-keCong/detaui
           path: detaui
@@ -31,13 +31,13 @@ jobs:
           yarn run build:web
 
       - name: Setup Pages
-        uses: ./github/actions/configure-pages # 使用本地版本的 actions/configure-pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: ./github/actions/upload-pages-artifact # 使用本地版本的 actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./detaui/web  # 确保路径正确
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: ./github/actions/deploy-pages # 使用本地版本的 actions/deploy-pages
+        uses: actions/deploy-pages@v4
