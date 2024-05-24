@@ -1,35 +1,43 @@
-# This is a basic workflow to help you get started with Actions
+name: CI and Deploy
 
-name: CI
-
-# Controls when the workflow will run
 on:
-    # Triggers the workflow on push or pull request events but only for the main branch
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
-    # Allows you to run this workflow manually from the Actions tab
-    workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    # This workflow contains a single job called "build"
-    build:
-        # The type of runner that the job will run on
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        # Steps represent a sequence of tasks that will be executed as part of the job
-        steps:
-          - name: Checkout  #步骤1：checkout
-            uses: actions/checkout@v2.3.1 #checkout需要引用的依赖
-            with:
-              repository: xiaoXiao-keCong/detaui
-              path: detaui
-          - name: install and build #步骤2：安装依赖和打包
-            run: | #运行下面两行命令
-              npm install -g yarn #安装yarn
-              cd detaui # 确保在正确的目录中运行
-              yarn install #安装依赖，当前分支的根目录做为默认目录
-              yarn run build:web #打包代码
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          repository: xiaoXiao-keCong/detaui
+          path: detaui
+
+      - name: Install and build
+        run: |
+          npm install -g yarn
+          cd detaui
+          yarn install
+          yarn run build:web
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./detaui/web  # 确保路径正确
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
