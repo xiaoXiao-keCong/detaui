@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "yarn lint && yarn vite ",
-    "build:doc": "vue-tsc --noEmit && vite build --outDir web --base /detaui/ --emptyOutDir --config ./vite.doc.config.ts",
+    "build:web": "vue-tsc --noEmit && vite build --outDir web --base /detaui/ --emptyOutDir --config ./vite.doc.config.ts",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
