@@ -30,5 +30,6 @@ jobs:
           - name: install and build #步骤2：安装依赖和打包
             run: | #运行下面两行命令
               npm install -g yarn #安装yarn
+              cd detaui # 确保在正确的目录中运行
               yarn install #安装依赖，当前分支的根目录做为默认目录
               yarn run build:web #打包代码
