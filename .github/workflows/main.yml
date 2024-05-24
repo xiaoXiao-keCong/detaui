@@ -19,13 +19,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       # 只允许在特定所有者存储库中使用 actions/setup-node 操作
       - name: Set up Node.js
         uses: actions/setup-node@v2
         if: github.repository_owner == 'xiaoXiao-keCong'
         with:
-          repository: xiaoXiao-keCong/detaui
-          path: detaui
+          node-version: '14'  # 添加 node 版本号
 
       - name: Install and build
         run: |
@@ -36,12 +36,15 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        if: github.repository_owner == 'xiaoXiao-keCong'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        if: github.repository_owner == 'xiaoXiao-keCong'
         with:
           path: ./detaui/web  # 确保路径正确
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        if: github.repository_owner == 'xiaoXiao-keCong'
