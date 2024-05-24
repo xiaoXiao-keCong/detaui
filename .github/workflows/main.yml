@@ -23,28 +23,23 @@ jobs:
       # 只允许在特定所有者存储库中使用 actions/setup-node 操作
       - name: Set up Node.js
         uses: actions/setup-node@v2
-        if: github.repository_owner == 'xiaoXiao-keCong'
         with:
           node-version: '14'  # 添加 node 版本号
 
       - name: Install and build
         run: |
           npm install -g yarn
-          cd detaui
           yarn install
           yarn run build:web
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        if: github.repository_owner == 'xiaoXiao-keCong'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        if: github.repository_owner == 'xiaoXiao-keCong'
         with:
-          path: ./detaui/web  # 确保路径正确
+          path: ./web  # 确保路径正确
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        if: github.repository_owner == 'xiaoXiao-keCong'
